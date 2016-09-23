@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
 
 	<h:body>
 		<h1>Novo Autor</h1>
 		<h:form>
 			<fieldset>
 				<legend>Dados do Autor</legend>
-				<h:panelGrid columns="2">
-					<h:inputTextarea></h:inputTextarea>
+				 
+					<p>Nome:</p> 
+					<h:inputText id="nome" value="#{muralBean.mural.nome}" />
+					<br></br>
+					
+					<p>Mensagem:</p>
+					<h:inputTextarea value="#{muralBean.mural.msg}"></h:inputTextarea>
 		 			<br></br>
 					
-				 
-					<h:inputText id="nome" value="#{autorBean.autor.nome}" />
-					<br></br>
-					<h:commandButton value="Gravar" action="#{autorBean.gravar}" />
-				</h:panelGrid>
+				 	
+					
+					<h:commandButton value="Gravar" action="#{muralBean.salvar}" />
+					
+					
+					
+					<hr/>
+					
+					<select >						
+						<ui:repeat value="#{muralBean.listar()}" var="mural">
+							<option value="#{mural.nome}">#{mural.nome}</option>
+						</ui:repeat>						
+					</select>
+					
+					
+					<hr/>
+					 
+					
+			 
 			</fieldset>
 		</h:form>
 	</h:body>
